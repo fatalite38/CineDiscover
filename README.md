@@ -1,4 +1,5 @@
 # CineDiscover - Movie Discovery App
+<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/a74d5066-2cbb-41cb-a60d-f944359bad7b" />
 
 Uma aplicação moderna para busca de filmes construída com React, TypeScript e a API do TMDB.
 
