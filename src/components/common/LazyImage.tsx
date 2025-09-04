@@ -14,7 +14,7 @@ export function LazyImage({ src, alt, className = '', placeholder }: LazyImagePr
   const [error, setError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // Intersection Observer for lazy loading
+  // Observar o carregamento da imagem
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {

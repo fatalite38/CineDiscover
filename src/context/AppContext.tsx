@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { Movie, MovieDetails } from '../types/movie';
 
-// State interface
+// Iniciar interface
 interface AppState {
   favorites: Movie[];
   searchHistory: string[];
@@ -14,7 +14,7 @@ interface AppState {
   currentQuery: string;
 }
 
-// Action types
+// Tipos de ações
 type AppAction = 
   | { type: 'SET_LOADING'; payload: boolean }
   | { type: 'SET_ERROR'; payload: string | null }
@@ -27,7 +27,7 @@ type AppAction =
   | { type: 'LOAD_SEARCH_HISTORY'; payload: string[] }
   | { type: 'CLEAR_SEARCH_RESULTS' };
 
-// Initial state
+// Estado inicial
 const initialState: AppState = {
   favorites: [],
   searchHistory: [],
@@ -110,7 +110,7 @@ interface AppProviderProps {
 export function AppProvider({ children }: AppProviderProps) {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // Load data from localStorage on mount
+  // Carregar os favoritos e o histórico de pesquisa do localStorage
   useEffect(() => {
     try {
       const savedFavorites = localStorage.getItem('movieFavorites');
@@ -129,7 +129,7 @@ export function AppProvider({ children }: AppProviderProps) {
     }
   }, []);
 
-  // Save favorites to localStorage whenever it changes
+  // Salvar os favoritos na localStorage
   useEffect(() => {
     try {
       localStorage.setItem('movieFavorites', JSON.stringify(state.favorites));
@@ -138,7 +138,7 @@ export function AppProvider({ children }: AppProviderProps) {
     }
   }, [state.favorites]);
 
-  // Save search history to localStorage
+  // Salvar o histórico de pesquisa na localStorage
   useEffect(() => {
     try {
       localStorage.setItem('searchHistory', JSON.stringify(state.searchHistory));
@@ -147,7 +147,7 @@ export function AppProvider({ children }: AppProviderProps) {
     }
   }, [state.searchHistory]);
 
-  // Helper functions
+  // funções auxiliares
   const addToFavorites = (movie: Movie) => {
     if (!isFavorite(movie.id)) {
       dispatch({ type: 'ADD_FAVORITE', payload: movie });
@@ -182,7 +182,7 @@ export function AppProvider({ children }: AppProviderProps) {
   );
 }
 
-// Custom hook to use the context
+// Custom hook
 export function useAppContext() {
   const context = useContext(AppContext);
   if (!context) {

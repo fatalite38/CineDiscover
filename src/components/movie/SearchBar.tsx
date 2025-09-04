@@ -8,7 +8,7 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export function SearchBar({ onSearch, placeholder = "Search for movies..." }: SearchBarProps) {
+export function SearchBar({ onSearch, placeholder = "Pesquisar filmes..." }: SearchBarProps) {
   const [query, setQuery] = useState('');
   const [showHistory, setShowHistory] = useState(false);
   const { state, addToSearchHistory } = useAppContext();

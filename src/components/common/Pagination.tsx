@@ -16,32 +16,28 @@ export function Pagination({
 }: PaginationProps) {
   if (totalPages <= 1) return null;
 
-  // Calculate page numbers to display
+  // Calcular as páginas visíveis
   const getVisiblePages = () => {
     const pages: (number | string)[] = [];
     const half = Math.floor(maxVisiblePages / 2);
     let start = Math.max(1, currentPage - half);
     let end = Math.min(totalPages, currentPage + half);
 
-    // Adjust if we're near the beginning or end
     if (currentPage <= half) {
       end = Math.min(maxVisiblePages, totalPages);
     } else if (currentPage + half >= totalPages) {
       start = Math.max(1, totalPages - maxVisiblePages + 1);
     }
 
-    // Add first page and ellipsis if needed
     if (start > 1) {
       pages.push(1);
       if (start > 2) pages.push('...');
     }
 
-    // Add visible pages
     for (let i = start; i <= end; i++) {
       pages.push(i);
     }
 
-    // Add ellipsis and last page if needed
     if (end < totalPages) {
       if (end < totalPages - 1) pages.push('...');
       pages.push(totalPages);

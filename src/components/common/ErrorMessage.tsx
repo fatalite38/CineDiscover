@@ -17,7 +17,7 @@ export function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
           className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
         >
           <RefreshCw className="w-4 h-4" />
-          Try Again
+          Tente novamente
         </button>
       )}
     </div>
